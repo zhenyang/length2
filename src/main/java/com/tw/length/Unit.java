@@ -1,6 +1,6 @@
-package com.tw;
+package com.tw.length;
 
-enum Unit {
+public enum Unit {
     m(1), cm(100), mm(1000);
 
     private double rate;
