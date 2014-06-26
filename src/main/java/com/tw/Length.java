@@ -1,34 +1,36 @@
 package com.tw;
 
 public class Length {
-    private double quantity;
-    private String unit;
 
-    public Length(double quantity, String unit) {
-        this.quantity = quantity;
+    private final double value;
+    private final String unit;
+
+    public Length(double value, String unit) {
+        this.value = value;
         this.unit = unit;
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Length length = (Length) o;
-        double lengthQuantityInM = quantityInM(length.quantity, length.unit);
-        double thisQuantityInM = quantityInM(this.quantity, this.unit);
-        return Double.compare(lengthQuantityInM, thisQuantityInM) == 0;
+    public boolean equals(Object obj) {
+        Length length = (Length) obj;
+        return toMM(this) == toMM(length);
     }
 
-    private double quantityInM(double quantity1, String unit1) {
-        double lengthQuantityInM = quantity1;
-        if (unit1.equals("cm")) {
-            lengthQuantityInM = quantity1 / 100;
-        }
-        if (unit1.equals("mm")) {
-            lengthQuantityInM = quantity1 / 1000;
-        }
-        return lengthQuantityInM;
+    public Length add(Length added) {
+        return new Length(toMM(this) + toMM(added), "mm");
     }
 
+    public Length subtract(Length another) {
+        return new Length(toMM(this) - toMM(another), "mm");
+    }
+
+    private double toMM(Length length) {
+        if (length.unit.equals("m")) {
+            return 1000 * length.value;
+        }
+        if (length.unit.equals("cm")) {
+            return 10 * length.value;
+        }
+        return length.value;
+    }
 }

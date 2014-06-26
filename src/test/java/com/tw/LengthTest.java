@@ -54,5 +54,27 @@ public class LengthTest {
         assertThat(hundredCM.equals(oneM), is(true));
     }
 
+    @Test
+    public void one_m_add_one_m_should_equal_two_m() throws Exception {
+        Length oneM = new Length(1.0, "m");
+        Length anotherOneM = new Length(1.0, "m");
 
+        assertThat(oneM.add(anotherOneM).equals(new Length(2, "m")), is(true));
+    }
+
+    @Test
+    public void ten_cm_add_one_m_should_equal_1100mm() throws Exception {
+        Length one = new Length(1.0, "m");
+        Length another = new Length(10, "cm");
+
+        assertThat(one.add(another).equals(new Length(1100, "mm")), is(true));
+    }
+
+    @Test
+    public void five_mm_subtract_one_mm_should_equal_four_mm() throws Exception {
+        Length one = new Length(5, "mm");
+        Length another = new Length(1, "mm");
+
+        assertThat(one.subtract(another).equals(new Length(4, "mm")), is(true));
+    }
 }
