@@ -26,4 +26,16 @@ public class ParkingLot {
         cars.remove(ticket.getCar());
         return ticket.getCar();
     }
+
+    public int getLeftLotSize() {
+        return size - cars.size();
+    }
+
+    public double getEmptyRatio() {
+        return getLeftLotSize() / cars.size();
+    }
+
+    public boolean isFull() {
+        return size == cars.size();
+    }
 }
