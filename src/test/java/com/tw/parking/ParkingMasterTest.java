@@ -1,6 +1,7 @@
 package com.tw.parking;
 
 import com.google.common.collect.Lists;
+import com.tw.parking.chooser.SmartChooser;
 import org.junit.Test;
 
 import java.util.List;
@@ -15,7 +16,8 @@ public class ParkingMasterTest {
         ParkingLot parkingLot2 = createParkingLot(3, 10);
         List<ParkingLot> parkingLots = Lists.newArrayList(parkingLot1,parkingLot2);
 
-        ParkingMaster parkingBoy = new ParkingMaster(parkingLots);
+        final List<ParkingLot> parkingLots1 = parkingLots;
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots1, new SmartChooser());
         Car car = new Car();
         Ticket ticket = parkingBoy.park(car);
 

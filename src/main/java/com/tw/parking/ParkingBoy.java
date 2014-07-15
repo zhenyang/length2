@@ -1,21 +1,20 @@
 package com.tw.parking;
 
+import com.tw.parking.chooser.Chooser;
+
 import java.util.List;
 
 public class ParkingBoy {
+    private final Chooser chooser;
     protected List<ParkingLot> parkingLots;
 
-    public ParkingBoy(List<ParkingLot> parkingLots) {
+    public ParkingBoy(List<ParkingLot> parkingLots, Chooser chooser) {
         this.parkingLots = parkingLots;
+        this.chooser = chooser;
     }
 
     public Ticket park(Car car) {
-        ParkingLot parkingLot = parkingLots.get(0);
-        for (int i = 1; i < parkingLots.size(); i++) {
-            if (parkingLot.isFull()) {
-                parkingLot = parkingLots.get(i);
-            }
-        }
+        ParkingLot parkingLot = this.chooser.chooseParkingLot(parkingLots);
         return parkingLot.park(car);
     }
 
@@ -29,3 +28,4 @@ public class ParkingBoy {
         return null;
     }
 }
+
