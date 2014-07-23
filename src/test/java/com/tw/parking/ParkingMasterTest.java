@@ -17,7 +17,7 @@ public class ParkingMasterTest {
         List<ParkingLot> parkingLots = Lists.newArrayList(parkingLot1,parkingLot2);
 
         final List<ParkingLot> parkingLots1 = parkingLots;
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLots1, new SmartChooser());
+        Parkable parkingBoy = new ParkingBoy(parkingLots1, new SmartChooser());
         Car car = new Car();
         Ticket ticket = parkingBoy.park(car);
 

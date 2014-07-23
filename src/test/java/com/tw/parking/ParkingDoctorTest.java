@@ -16,7 +16,7 @@ public class ParkingDoctorTest {
         ParkingLot parkingLot2 = Helper.createParkingLot(1, 5);
         List<ParkingLot> parkingLots = Lists.newArrayList(parkingLot1,parkingLot2);
 
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLots, new SmartestChooser());
+        Parkable parkingBoy = new ParkingBoy(parkingLots, new SmartestChooser());
         Car car = new Car();
         Ticket ticket = parkingBoy.park(car);
 

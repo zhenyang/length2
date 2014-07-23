@@ -16,7 +16,7 @@ public class ParkingBoyTest {
     public void test_should_park_car() throws Exception {
         ParkingLot parkingLot = new ParkingLot(1);
         List<ParkingLot> parkingLots = Lists.newArrayList(parkingLot);
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLots, new NormalChooser());
+        Parkable parkingBoy = new ParkingBoy(parkingLots, new NormalChooser());
         Car car = new Car();
         Ticket ticket = parkingBoy.park(car);
 
@@ -28,7 +28,7 @@ public class ParkingBoyTest {
         ParkingLot parkingLot1 = new ParkingLot(0);
         ParkingLot parkingLot2 = new ParkingLot(1);
         List<ParkingLot> parkingLots = Lists.newArrayList(parkingLot1,parkingLot2);
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLots, new NormalChooser());
+        Parkable parkingBoy = new ParkingBoy(parkingLots, new NormalChooser());
 
         Car car = new Car();
         Ticket ticket = parkingBoy.park(car);
@@ -41,7 +41,7 @@ public class ParkingBoyTest {
         ParkingLot parkingLot1 = new ParkingLot(0);
         ParkingLot parkingLot2 = new ParkingLot(1);
         List<ParkingLot> parkingLots = Lists.newArrayList(parkingLot1,parkingLot2);
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLots, new NormalChooser());
+        Parkable parkingBoy = new ParkingBoy(parkingLots, new NormalChooser());
         Car car = new Car();
         Ticket ticket = parkingLot2.park(car);
 
@@ -53,7 +53,7 @@ public class ParkingBoyTest {
         ParkingLot parkingLot1 = new ParkingLot(0);
         ParkingLot parkingLot2 = new ParkingLot(1);
         List<ParkingLot> parkingLots = Lists.newArrayList(parkingLot1,parkingLot2);
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLots, new NormalChooser());
+        Parkable parkingBoy = new ParkingBoy(parkingLots, new NormalChooser());
         Car car = new Car();
         Ticket ticket = parkingLot2.park(car);
 

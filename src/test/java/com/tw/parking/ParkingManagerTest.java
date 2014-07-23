@@ -11,9 +11,9 @@ public class ParkingManagerTest {
     @Test
     public void testShouldManageParkingBoy() throws Exception {
         ParkingLot parkingLot = Helper.createParkingLot(0, 1);
-        ParkingBoy parkingBoy = new ParkingBoy(Lists.newArrayList(parkingLot), new NormalChooser());
+        Parkable parkingBoy = new ParkingBoy(Lists.newArrayList(parkingLot), new NormalChooser());
 
-        ParkingManager parkingManager = new ParkingManager(Lists.newArrayList(parkingBoy));
+        Parkable parkingManager = new ParkingManager(Lists.newArrayList(parkingBoy));
 
         Car car = new Car();
         Ticket ticket = parkingManager.park(car);

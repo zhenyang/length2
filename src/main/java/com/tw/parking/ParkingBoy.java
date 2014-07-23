@@ -4,7 +4,7 @@ import com.tw.parking.chooser.Chooser;
 
 import java.util.List;
 
-public class ParkingBoy {
+public class ParkingBoy implements Parkable {
     private final Chooser chooser;
     protected List<ParkingLot> parkingLots;
 
