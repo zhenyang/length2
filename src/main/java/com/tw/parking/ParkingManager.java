@@ -1,5 +1,7 @@
 package com.tw.parking;
 
+import com.google.common.base.Splitter;
+
 import java.util.List;
 
 public class ParkingManager implements Parkable {
@@ -29,4 +31,17 @@ public class ParkingManager implements Parkable {
         }
         return null;
     }
+
+    public String report() {
+        StringBuilder result = new StringBuilder("ParkingManager\n");
+        for (Parkable parkable : this.parkingBoy) {
+            String report = parkable.report();
+            Iterable<String> split = Splitter.on("\n").split(report);
+            for (String s : split) {
+                result.append("--").append(s).append("\n");
+            }
+        }
+        return result.substring(0, result.length() - 1);
+    }
+
 }

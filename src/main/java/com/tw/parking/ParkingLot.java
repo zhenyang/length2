@@ -38,4 +38,8 @@ public class ParkingLot {
     public boolean isFull() {
         return size == cars.size();
     }
+
+    public String report() {
+        return "ParkingLot(" + cars.size() + "/" + size + ")";
+    }
 }

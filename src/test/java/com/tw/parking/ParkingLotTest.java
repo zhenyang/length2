@@ -56,4 +56,12 @@ public class ParkingLotTest {
         Car unParkedAnotherCar = parkingLot.unPark(ticket1);
         assertThat(unParkedAnotherCar, sameInstance(anotherCar));
     }
+
+
+    @Test
+    public void should_report() throws Exception {
+        ParkingLot lot = Helper.createParkingLot(2, 10);
+        assertThat(lot.report(),is("ParkingLot(2/10)"));
+
+    }
 }

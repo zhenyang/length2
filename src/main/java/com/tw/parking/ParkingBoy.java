@@ -1,5 +1,6 @@
 package com.tw.parking;
 
+import com.google.common.base.Splitter;
 import com.tw.parking.chooser.Chooser;
 
 import java.util.List;
@@ -27,5 +28,20 @@ public class ParkingBoy implements Parkable {
         }
         return null;
     }
+
+    public String report() {
+        StringBuilder result = new StringBuilder("");
+        result.append("ParkingBoy\n");
+        for (ParkingLot parkingLot : parkingLots) {
+            String report = parkingLot.report();
+            Iterable<String> split = Splitter.on("\n").split(report);
+            for (String s : split) {
+                result.append("--").append(s).append("\n");
+            }
+        }
+        result.delete(result.length() - 1, result.length());
+        return result.toString();
+    }
+
 }
 
