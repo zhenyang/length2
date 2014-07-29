@@ -44,8 +44,8 @@ public class ParkingManagerTest {
                 "------ParkingLot(2/8)\n" +
                 "----ParkingBoy\n" +
                 "------ParkingLot(1/7)\n" +
-                "------ParkingLot(2/8)" ;
+                "------ParkingLot(2/8)\n" ;
 
-        assertThat(parkingManager2.report(), is(result));
+        assertThat(parkingManager2.report(0), is(result));
     }
 }

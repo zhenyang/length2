@@ -1,5 +1,7 @@
 package com.tw.parking;
 
+import com.google.common.base.Strings;
+
 import java.util.ArrayList;
 
 public class ParkingLot {
@@ -39,7 +41,7 @@ public class ParkingLot {
         return size == cars.size();
     }
 
-    public String report() {
-        return "ParkingLot(" + cars.size() + "/" + size + ")";
+    public String report(int level) {
+        return Strings.repeat("--", level) + "ParkingLot(" + cars.size() + "/" + size + ")\n";
     }
 }

@@ -1,6 +1,6 @@
 package com.tw.parking;
 
-import com.google.common.base.Splitter;
+import com.google.common.base.Strings;
 
 import java.util.List;
 
@@ -32,16 +32,13 @@ public class ParkingManager implements Parkable {
         return null;
     }
 
-    public String report() {
-        StringBuilder result = new StringBuilder("ParkingManager\n");
-        for (Parkable parkable : this.parkingBoy) {
-            String report = parkable.report();
-            Iterable<String> split = Splitter.on("\n").split(report);
-            for (String s : split) {
-                result.append("--").append(s).append("\n");
-            }
+    public String report(int level) {
+        StringBuilder result = new StringBuilder("");
+        result.append(Strings.repeat("--", level)).append("ParkingManager\n");
+        for (Parkable parkable : parkingBoy) {
+            result.append(parkable.report(level + 1));
         }
-        return result.substring(0, result.length() - 1);
+        return result.toString();
     }
 
 }
