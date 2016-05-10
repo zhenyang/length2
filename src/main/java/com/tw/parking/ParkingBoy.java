@@ -28,8 +28,13 @@ public class ParkingBoy implements Parkable {
         return null;
     }
 
-    public String report(Reporter reporter) {
-        return reporter.visitParkingBoy(this.parkingLots);
+    public List<ParkingLot> getParkingLots() {
+        return parkingLots;
     }
+
+    public String accept(Visitor visitor) {
+        return visitor.visitParkable(this);
+    }
+
 }
 

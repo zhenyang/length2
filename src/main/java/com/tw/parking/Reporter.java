@@ -2,9 +2,7 @@ package com.tw.parking;
 
 import com.google.common.base.Strings;
 
-import java.util.List;
-
-public class Reporter {
+public class Reporter implements Visitor {
     private int level;
     private final StringBuilder result;
 
@@ -13,20 +11,19 @@ public class Reporter {
         this.result = new StringBuilder();
     }
 
-    String visitParkingManager(List<Parkable> parkables) {
+    public String visitParkable(ParkingManager parkingManager) {
         this.result.append(Strings.repeat("--", this.level)).append("ParkingManager\n");
         this.level++;
-        for (Parkable parkable : parkables) {
-            parkable.report(this);
+        for (Parkable parkable : parkingManager.getParkables()) {
+            parkable.accept(this);
         }
         this.level--;
-
         return this.result.toString();
     }
 
-    String visitParkingBoy(List<ParkingLot> parkingLots) {
+    public String visitParkable(ParkingBoy parkingBoy) {
         this.result.append(Strings.repeat("--", this.level)).append("ParkingBoy\n");
-        for (ParkingLot parkingLot : parkingLots) {
+        for (ParkingLot parkingLot : parkingBoy.getParkingLots()) {
             this.result.append(parkingLot.report(this.level + 1));
         }
         return this.result.toString();
